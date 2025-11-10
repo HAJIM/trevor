@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Digital Mentor Challenge — HTML Slides</title>
+  <style>
+    :root{
+      --bg:#0b0f1a;        /* deep space */
+      --card:#12182a;      /* panel */
+      --muted:#7b8aaa;      /* text muted */
+      --text:#e7ecff;      /* text */
+      --accent:#8a7dff;      /* neon purple */
+      --accent2:#00e7d3;     /* neon aqua */
+      --ring: 0 0 0 2px var(--accent2),0 0 24px var(--accent2);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background: radial-gradient(1000px 800px at 10% -10%, rgba(138,125,255,.25), transparent 60%),
+                            radial-gradient(800px 600px at 100% 0%, rgba(0,231,211,.18), transparent 60%),
+                            var(--bg);
+      overflow:hidden;
+    }
+    /* Container */
+    .deck{height:100%; display:grid; grid-template-rows:auto 1fr auto;}
+
+    /* Header */
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px 18px; border-bottom:1px solid rgba(255,255,255,.06);
+      backdrop-filter: blur(6px);
+    }
+    .brand{font-weight:700; letter-spacing:.4px}
+    .brand small{color:var(--muted); font-weight:500}
+
+    /* Slides */
+    .viewport{position:relative; height:100%;}
+    .slides{position:absolute; inset:0; display:flex; transition:transform .45s cubic-bezier(.2,.9,.2,1);}
+    .slide{min-width:100%; padding:42px 56px; display:grid; grid-template-rows:auto 1fr; gap:18px;}
+
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+          border:1px solid rgba(255,255,255,.08); border-radius:22px; padding:28px; box-shadow:0 12px 40px rgba(0,0,0,.35)}
+    h1,h2{margin:0 0 8px}
+    h1{font-size:46px}
+    h2{font-size:28px; color:#cfd7ff}
+    p.lead{color:#cbd6ff; font-size:18px; margin:8px 0 0}
+
+    ul{margin:0; padding-left:1.1rem}
+    li{margin:8px 0}
+    .kicker{color:var(--accent2); text-transform:uppercase; font-weight:700; letter-spacing:.12em; font-size:12px}
+
+    /* Footer / Controls */
+    footer{
+      display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px 16px;
+      border-top:1px solid rgba(255,255,255,.06)
+    }
+    .controls{display:flex; gap:8px}
+    button.ctrl{appearance:none; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      color:var(--text); border:1px solid rgba(255,255,255,.12); padding:10px 14px; border-radius:12px; cursor:pointer}
+    button.ctrl:focus{outline:none; box-shadow:var(--ring)}
+
+    .progress{height:6px; flex:1; background:rgba(255,255,255,.08); border-radius:99px; overflow:hidden}
+    .bar{height:100%; width:0%; background:linear-gradient(90deg, var(--accent), var(--accent2)); transition:width .4s ease}
+
+    /* helper badges */
+    .badge{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; background:rgba(138,125,255,.12); color:#dad8ff; font-size:12px; border:1px solid rgba(138,125,255,.28)}
+
+    /* two-column layout for content */
+    .grid{display:grid; grid-template-columns:1.2fr 1fr; gap:22px}
+
+    /* table look */
+    .table{width:100%; border-collapse:separate; border-spacing:0 10px}
+    .table tr{background:rgba(255,255,255,.04)}
+    .table td{padding:10px 14px; border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08)}
+    .table tr td:first-child{border-left:1px solid rgba(255,255,255,.08); border-top-left-radius:12px; border-bottom-left-radius:12px; color:#bcd5ff}
+    .table tr td:last-child{border-right:1px solid rgba(255,255,255,.08); border-top-right-radius:12px; border-bottom-right-radius:12px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .slide{padding:28px}
+      h1{font-size:34px}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" role="application" aria-label="Digital Mentor Slides">
+    <header>
+      <div class="brand">The Digital Mentor Challenge <small>· CISA 2025</small></div>
+      <div class="badge">Use ← / → to navigate</div>
+    </header>
+
+    <div class="viewport">
+      <div class="slides" id="slides">
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">CISA 2025 Annual Conference</div>
+            <h1>The Digital Mentor Challenge</h1>
+            <p class="lead">How AI Empowers Human-Centred Leadership</p>
+          </div>
+          <div class="panel">
+            <h2>Trevor Stewart</h2>
+            <p class="lead">Canadian Foreign Language School (CLS)</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">Session Map</div>
+            <h1>What We'll Cover</h1>
+            <ul>
+              <li>The changing role of leadership in the AI era</li>
+              <li>My journey: From a simple idea to HTML innovation</li>
+              <li>ChatGPT vs. Gemini — Real comparisons for leaders</li>
+              <li>AI for communication, organization, and creativity</li>
+              <li>Group Activity: The Digital Mentor Challenge</li>
+              <li>Q&A and reflection</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">A Personal Story</div>
+            <h1>When AI Became an Enabler</h1>
+            <ul>
+              <li>Fractured my thumb → lost ability to type/use phone</li>
+              <li>Voice input + AI drafts kept leadership moving</li>
+              <li>Focus returned to people, not paperwork</li>
+              <li>AI as a tool for accessibility, adaptability, and inclusion</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Key Message</h2>
+            <p class="lead">Leadership in the AI age is about strategic human connection and adaptive resilience.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">Origin Story</div>
+            <h1>From Python to HTML</h1>
+            <ul>
+              <li>Goal: Help my wife’s small business (fake nails)</li>
+              <li>Idea: A program to pick a nail color + generate a slogan</li>
+              <li>Python was powerful, but not visual or shareable</li>
+              <li>HTML gave instant, visible results</li>
+              <li>First project: A simple color selector that worked!</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Leadership Lesson</h2>
+            <p class="lead">Coding isn't just technical; it's about solving problems creatively. That small win showed me the power of HTML for school leadership.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">Mentorship</div>
+            <h1>A Personal Transformation</h1>
+            <ul>
+              <li>ChatGPT became a "quiet space to think aloud"</li>
+              <li>Shaping difficult emails with empathy and strength</li>
+              <li>Turning scattered notes into structured leadership plans</li>
+              <li>Reframing thinking during stressful moments</li>
+              <li>Example: Built a detailed teacher feedback framework</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>How It Felt</h2>
+            <p class="lead">ChatGPT didn't replace my leadership; it refined it. It became a digital mentor, helping me focus more on people than paperwork.</p>
+          </div>
+        </section>
+        
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">Low-Cost Innovation</div>
+            <h1>Why HTML Matters for Leaders</h1>
+            <ul>
+              <li>Dashboards beat heavy, static PowerPoints</li>
+              <li>A great alternative when expensive LMS (Toddle/ManageBac) aren't an option</li>
+              <li>Create bilingual communication tools in minutes</li>
+              <li>Own your structure: agendas, trackers, data visuals</li>
+              <li>Innovate without big budgets or technical staff</li>
+            </ul>
+            <p class="lead" style="margin-top: 16px;">A simple HTML system can rival expensive platforms.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">The Toolkit</div>
+            <h1>ChatGPT vs. Gemini</h1>
+            <table class="table" aria-label="Comparison table">
+              <tr><td>Speed</td><td><b>ChatGPT:</b> Fast for small/medium tasks · <b>Gemini:</b> Slower start, steady on large code</td></tr>
+              <tr><td>Context</td><td><b>ChatGPT:</b> Friction around ~600 lines · <b>Gemini:</b> Handles 2,000+ lines comfortably</td></tr>
+              <tr><td>Output</td><td><b>ChatGPT:</b> Strong structure, great for docs · <b>Gemini:</b> Logical, consistent for large codebases</td></tr>
+              <tr><td>Best Use</td><td><b>ChatGPT:</b> Comms, planning, visuals · <b>Gemini:</b> Large HTML, multi-page systems, refactors</td></tr>
+            </table>
+          </div>
+          <div class="panel">
+            <h2>My Workflow</h2>
+            <ul>
+              <li>Prototype large HTML systems in <strong>Gemini</strong></li>
+              <li>Switch to <strong>ChatGPT</strong> for docs, slides, summaries, and bilingual polish</li>
+              <li>Use both, and know their strengths!</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">In Practice</div>
+            <h1>Real Leadership Use Cases</h1>
+            <ul>
+              <li><b>Communication:</b> AI-generated bilingual newsletters, meeting summaries</li>
+              <li><b>Organization:</b> HTML dashboards replacing weekly PPTs</li>
+              <li><b>Creativity:</b> Designing posters and banners with AI image tools</li>
+              <li><b>Decision-Making:</b> Summarizing teacher & parent feedback</li>
+              <li><b>Coaching:</b> Framing personalized growth goals and feedback</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>The Goal</h2>
+            <p class="lead">AI doesn't replace leadership—it enhances it by freeing time for meaningful human connection.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">Team Growth</div>
+            <h1>AI for Professional Development</h1>
+            <ul>
+              <li>Build shared resources (templates, unit planners)</li>
+              <li>Create AI-assisted mentorship plans to track growth</li>
+              <li>Offer micro-sessions: "Prompt Crafting for Educators"</li>
+              <li>Embed AI into your learning culture, not just IT</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">Activity</div>
+            <h1>The Digital Mentor Challenge</h1>
+            <ul>
+              <li><b>In Groups:</b> Discuss a real leadership challenge (e.g., motivation, burnout)</li>
+              <li>Use ChatGPT/Gemini to generate a response plan</li>
+              <li>Add an HTML or visual communication element</li>
+              <li><b>Shareback:</b> What surprised you? What did the AI miss?</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Reflection</h2>
+            <p class="lead">What parts of leadership will always, and must always, require a human-only touch?</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">Tool-Check</div>
+            <h1>AI Tools to Know</h1>
+            <table class="table" aria-label="AI Tools">
+              <tr><td>ChatGPT</td><td>Reports, presentations, planning, comms</td></tr>
+              <tr><td>Gemini</td><td>Long HTML, data analytics, large-scale code</td></tr>
+              <tr><td>Canva AI</td><td>Quick design, branding, visuals</td></tr>
+              <tr><td>Perplexity AI</td><td>Quick research and source comparison</td></tr>
+              <tr><td>Notion AI / Coda AI</td><td>Collaborative wikis and workflow management</td></tr>
+            </table>
+            <p class="lead" style="margin-top: 16px;">Use the right AI for the right job—that’s modern leadership.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">Next Steps</div>
+            <h1>Actionable Takeaways</h1>
+            <ul>
+              <li><b>Start Small:</b> Automate one repetitive task this month.</li>
+              <li><b>Build Transparency:</b> Let your team see and shape your AI use.</li>
+              <li><b>Invest in Skills:</b> Run micro-trainings on prompt writing.</li>
+              <li><b>Reflect:</b> How can AI make your leadership *more* human?</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Core Idea</h2>
+            <p class="lead">Empowered leaders use AI not for control, but for connection.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">The Horizon</div>
+            <h1>Future of AI in Leadership</h1>
+            <ul>
+              <li>AI dashboards for school wellbeing and feedback</li>
+              <li>Predictive analytics to identify student challenges early</li>
+              <li>Voice/visual AI for instant translation & accessibility</li>
+              <li>AI-driven IB documentation for faster planning</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>The Future</h2>
+            <p class="lead">The future isn't AI replacing leaders—it's AI amplifying their impact.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="panel">
+            <div class="kicker">Close</div>
+            <h1>Q&A & Reflection</h1>
+            <p class="lead">How can AI help you become a more authentic leader?</p>
+          </div>
+          <div class="panel">
+            <h2>Thank You!</h2>
+            <p class="lead">Trevor Stewart<br>Canadian Foreign Language School (CLS)</p>
+            <p class="lead" style="margin-top: 12px; color: var(--accent);">trevor@cieo.com.cn</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <footer>
+      <div class="controls">
+        <button class="ctrl" id="prev" aria-label="Previous slide">← Prev</button>
+        <button class="ctrl" id="next" aria-label="Next slide">Next →</button>
+      </div>
+      <div class="progress" aria-label="Progress"><div class="bar" id="bar"></div></div>
+    </footer>
+  </div>
+
+  <script>
+    const slides = document.getElementById('slides');
+    const bar = document.getElementById('bar');
+    const total = slides.children.length;
+    let index = 0;
+
+    function go(i){
+      index = Math.max(0, Math.min(total-1, i));
+      slides.style.transform = `translateX(${-index*100}%)`;
+      bar.style.width = ((index+1)/total*100) + '%';
+    }
+    document.getElementById('next').onclick = ()=>go(index+1);
+    document.getElementById('prev').onclick = ()=>go(index-1);
+    window.addEventListener('keydown', (e)=>{
+      if(e.key==='ArrowRight' || e.key==='PageDown') go(index+1);
+      if(e.key==='ArrowLeft'  || e.key==='PageUp')   go(index-1);
+    });
+    go(0);
+  </script>
+</body>
+</html>
